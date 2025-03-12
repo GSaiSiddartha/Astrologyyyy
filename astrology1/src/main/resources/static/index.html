@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TechAstro</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<form autocomplete="on"> <!--action="/action_page.php" method="post"-->
+
+    <label for="name">Enter Full name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="dob">Enter Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <label for="tob">Enter Time of Birth:</label>
+    <input type="time" id="tob" name="tob" required><br><br>
+
+    <label for="pob">Enter place of Birth:</label>
+    <input type="text" id="pob" name="pob" required><br><br>
+
+    <button type="submit" onclick="validateForm(event)">Submit</button><br>
+</form>
+<script>
+    function validateForm(event){
+
+           event.preventDefault();
+
+           const name = document.getElementById('name').value;
+           console.log(name);
+
+           const dob = document.getElementById('dob').value;
+           console.log(dob);
+
+           const tob = document.getElementById('tob').value;
+           console.log(tob);
+
+           const pob = document.getElementById('pob').value;
+           console.log(pob);
+
+           const details = {
+           fullName:name,
+           dateOfBirth:dob,
+           timeOfBirth:tob,
+           placeOfBirth:pob
+           }
+
+           console.log(JSON.stringify(details));
+
+           fetch("http://localhost:8080/details/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(details)
+            })
+            .then(response => response.text())
+            .then(message => alert("Server Response: " + JSON.stringify(message)))
+            .catch(error => console.error("Error:", error));
+    }
+
+</script>
+</body>
+</html>
