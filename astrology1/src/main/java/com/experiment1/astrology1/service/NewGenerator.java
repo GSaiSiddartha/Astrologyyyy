@@ -15,7 +15,7 @@ public class NewGenerator {
         String password = "c2308fbe0e38b845ff56b9719cdd9c58704a5a8b";
         String basicAuthHeader = "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
 
-        System.out.println(basicAuthHeader);
+        //System.out.println(basicAuthHeader);
 
         // Create WebClient instance
         WebClient client = WebClient.builder()
