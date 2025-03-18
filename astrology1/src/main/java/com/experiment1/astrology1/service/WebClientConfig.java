@@ -16,21 +16,31 @@ public class WebClientConfig {
     String basicAuthHeader = "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
 
 
-    public WebClientConfig(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("https://json.astrologyapi.com/v1")
+    public WebClientConfig() {
+        this.webClient = WebClient.builder()
+                .baseUrl("https://json.astrologyapi.com/v1")
                 .defaultHeader("Authorization", basicAuthHeader) // Add Basic Auth header
                 .defaultHeader("Content-Type", "application/json") // Set Content-Type
                 .build();
     }
 
 
-//    public Mono<String> apiRequestCall(){
-//        Mono<String> response = webClient.post()
-//                .bodyValue(jsonRequestBody)  // Attach JSON body
-//                .retrieve()
-//                .bodyToMono(String.class);
-//        return response;
-//    }
+    public Mono<String> apiRequestCall(String endPoint, String jsonRequestBody){
+
+        System.out.println(jsonRequestBody);
+
+        // Send POST request with JSON body
+        Mono<String> response = this.webClient.post()
+                .uri("/"+endPoint)
+                .bodyValue(jsonRequestBody)  // Attach JSON body
+                .retrieve()
+                .bodyToMono(String.class);
+
+        // Print response asynchronously
+        response.subscribe(System.out::println);
+
+        return response;
+    }
 
 
 }
