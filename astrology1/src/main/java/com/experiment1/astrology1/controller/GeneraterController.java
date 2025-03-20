@@ -49,21 +49,21 @@ public class GeneraterController {
 //        return response;
 //    }
 
-    @GetMapping("/generate-planets")
-    // /report/generate-planets
-    public Mono<String> planetReport(){
-        this.endPoint = "planets";
-        Mono<String> response = webClientConfig.apiRequestCall(endPoint, jsonRequestBody);
-        return response;
-    }
-
-    @GetMapping("/generate-astro_details")
-    // /report/generate-astro_details
-    public Mono<String> astro_detailsReport(){
-        this.endPoint = "astro_details";
-        Mono<String> response = webClientConfig.apiRequestCall(endPoint, jsonRequestBody);
-        return response;
-    }
+//    @GetMapping("/generate-planets")
+//    // /report/generate-planets
+//    public Mono<String> planetReport(){
+//        this.endPoint = "planets";
+//        Mono<String> response = webClientConfig.apiRequestCall(endPoint, jsonRequestBody);
+//        return response;
+//    }
+//
+//    @GetMapping("/generate-astro_details")
+//    // /report/generate-astro_details
+//    public Mono<String> astro_detailsReport(){
+//        this.endPoint = "astro_details";
+//        Mono<String> response = webClientConfig.apiRequestCall(endPoint, jsonRequestBody);
+//        return response;
+//    }
 
 
 }

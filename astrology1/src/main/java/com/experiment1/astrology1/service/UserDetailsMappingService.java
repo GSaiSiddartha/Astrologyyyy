@@ -35,9 +35,9 @@ public class UserDetailsMappingService {
     private GeocodingService geocodingService;
 
     public RequestObject convertToRequestObject(UserDetails userDetails) {
-        System.out.println("In UserDetailsMappingService displaying user details"+userDetails.getPlaceOfBirth());
+        System.out.println("In UserDetailsMappingService displaying user details place of birth "+userDetails.getPlaceOfBirth());
         double[] coordinates = geocodingService.getCoordinates(userDetails.getPlaceOfBirth());
-        System.out.println("In UserDetailsMappingService displaying coordinates"+ Arrays.toString(coordinates));
+        System.out.println("In UserDetailsMappingService displaying coordinates "+ Arrays.toString(coordinates));
         return new RequestObject(
                 getDay(userDetails.getDateOfBirth()),
                 getMonth(userDetails.getDateOfBirth()),

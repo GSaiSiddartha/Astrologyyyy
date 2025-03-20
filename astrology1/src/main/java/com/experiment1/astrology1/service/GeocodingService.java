@@ -10,7 +10,7 @@ public class GeocodingService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public double[] getCoordinates(String placeName) {
-        System.out.println("In GeocodingService displaying received location name"+ placeName);
+        System.out.println("In GeocodingService displaying received location name "+ placeName);
         String url = "https://nominatim.openstreetmap.org/search?q=" + placeName + "&format=json";
         JsonNode response = restTemplate.getForObject(url, JsonNode.class);
 

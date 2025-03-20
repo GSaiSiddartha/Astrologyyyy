@@ -27,7 +27,7 @@ public class WebClientConfig {
 
     public Mono<String> apiRequestCall(String endPoint, String jsonRequestBody){
 
-        System.out.println(jsonRequestBody);
+        System.out.println("Request Object Received JSON Obj in WebclientConfig method  "+jsonRequestBody);
 
         // Send POST request with JSON body
         Mono<String> response = this.webClient.post()
@@ -37,7 +37,11 @@ public class WebClientConfig {
                 .bodyToMono(String.class);
 
         // Print response asynchronously
-        response.subscribe(System.out::println);
+        //response.subscribe(System.out::println);
+        response.subscribe(
+                data -> System.out.println("Received: " + data),
+                error -> System.err.println("Error: " + error) // Handle errors gracefully
+        );
 
         return response;
     }

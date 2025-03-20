@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 
 public class Testing {
+
 //    public static double[] getCoordinates(String placeName) {
 //        final RestTemplate restTemplate = new RestTemplate();
 //        String url = "https://nominatim.openstreetmap.org/search?q=" + placeName + "&format=json";
